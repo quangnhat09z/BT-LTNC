@@ -52,8 +52,7 @@ int main() {
     inputVector(v, n);
     cin >> number;
     inputVector(answerVector, number);
-    //check(v, answerVector);
     printAnswer(v, answerVector);
-    //cout << diff(v, 4);
+    
     return 0;
 }
