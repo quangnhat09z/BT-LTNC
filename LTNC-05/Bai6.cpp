@@ -8,10 +8,8 @@ int main() {
     int n; cin >> n;
     int type, marks;
     string name;
-    
     vector<int> result;
     map<string, int> mp;
-    
     for (int i = 0; i < n; i++) {
         cin >> type;
         if (type == 1) {
