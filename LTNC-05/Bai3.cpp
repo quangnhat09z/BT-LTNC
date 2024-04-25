@@ -5,54 +5,30 @@ using namespace std;
 
 void inputVector(vector<int> &v, int n) {
     v.resize(n);
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> v[i];
     }
 }
 
-int diff(vector<int> &v, int x) {
-    for (int i = 1; i <= v.size(); i++) {
-        if (v[i] - x == 0) return i;
-        if (v[i] - x > 0) return i;
-    }
-}
-
-int linearSearch(vector<int> &v, int x) {
-    for (int i = 1; i <= v.size(); i++) {
-        if (v[i] == x) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-void check(vector<int> &v, int x) {
-    for (int i = 1; i <= v.size(); i++) {
-        if (linearSearch(v, x) > 0) {
-            cout << "Yes " << linearSearch(v, x) << endl;
-            break;
-        }
-        if (linearSearch(v, x) == -1) {
-            cout << "No " << diff(v, x) << endl;
-            break;
-        }
-    }
-}
-
-void printAnswer(vector<int> &v, vector<int> &answerVector) {
-    for (int i = 1; i <= answerVector.size(); i++) {
-        check(v, answerVector[i]);
+void printVector(vector<int> &v, int n, int start, int end) {
+    int length = n - 1 - (end - start);
+    v.resize(length);
+    cout << length << endl;
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << " ";
     }
 }
 
 int main() {
-    int n, number;
+    int n, start, end, eraseElement;
     cin >> n;
-    vector<int> v, answerVector;
+    vector<int> v;
     inputVector(v, n);
-    cin >> number;
-    inputVector(answerVector, number);
-    printAnswer(v, answerVector);
-    
+    cin >> eraseElement;
+    cin >> start >> end;
+    v.erase(v.begin() + eraseElement - 1);
+    v.erase(v.begin() + start - 1, v.begin() + end - 1);
+    printVector(v, n, start, end);
     return 0;
 }
+
